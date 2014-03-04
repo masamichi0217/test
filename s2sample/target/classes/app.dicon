@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container 2.4//EN" 
+	"http://www.seasar.org/dtd/components24.dtd">
+<components>
+	<component name="messageTarget"
+		class="org.seasar.example.s2container.helloworld.SeasarMessageTarget"
+		instance="singleton">
+	</component>
+
+
+	<component name="messageProvider"
+		class="org.seasar.example.s2container.helloworld.HelloMessageProvider"
+		instance="singleton">
+		<property name="messageTarget">messageTarget</property>
+	</component>
+
+	<component name="test"
+		class="org.seasar.example.s2container.helloworld.FileLoader">
+		<arg>"testtest"</arg>
+		<property name="test">"unko"</property>
+		<initMethod name="addFileName">
+			<arg>"iroiro"</arg>
+		</initMethod>
+		<initMethod name="addFileName">
+			<arg>"gomen"</arg>
+		</initMethod>
+		<aspect>loggingIntercaptor</aspect>
+	</component>
+
+	<component name="date"
+		class="org.seasar.example.s2container.helloworld.DateFormatter">
+		<property name="format">
+			new java.text.SimpleDateFormat("yyyy/MM/dd")
+		</property>
+	</component>
+
+
+	<component name = "loggingIntercaptor" class="org.seasar.example.s2container.helloworld.LoggingInterceptor">
+	</component>
+</components>
